@@ -1,4 +1,213 @@
-ti{
-    text-align: center;
-
-}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        html {
+            scroll-behavior: smooth;
+        }
+ 
+        body {
+            font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f0e8 100%);
+            color: #2c2c2c;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+ 
+        /* ===== ヘッダー ===== */
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 193, 7, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+ 
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(25, 103, 210, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+ 
+        h1 {
+            position: relative;
+            z-index: 1;
+        }
+ 
+        .ti {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #1967d2 0%, #ffc107 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Courier New', 'Hiragino Sans', monospace;
+            font-style: italic;
+        }
+ 
+        /* ===== リンク コンテナ ===== */
+        .destination-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+ 
+        .hokkaido_title,
+        .tai_title {
+            text-decoration: none;
+            padding: 40px 30px;
+            border-radius: 12px;
+            font-size: 32px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+ 
+        .hokkaido_title {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1967d2;
+            border: 2px solid #1967d2;
+        }
+ 
+        .hokkaido_title::before {
+            content: '❄️';
+            position: absolute;
+            left: 20px;
+            font-size: 48px;
+            opacity: 0.3;
+        }
+ 
+        .hokkaido_title:hover {
+            background: linear-gradient(135deg, #1967d2 0%, #1565c0 100%);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(25, 103, 210, 0.3);
+        }
+ 
+        .tai_title {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+            color: #f57f17;
+            border: 2px solid #ffc107;
+        }
+ 
+        .tai_title::before {
+            content: '☀️';
+            position: absolute;
+            right: 20px;
+            font-size: 48px;
+            opacity: 0.3;
+        }
+ 
+        .tai_title:hover {
+            background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(255, 193, 7, 0.3);
+        }
+ 
+        /* ===== フッター ===== */
+        footer {
+            margin-top: auto;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+ 
+        footer a {
+            color: #1967d2;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+ 
+        footer a:hover {
+            color: #ffc107;
+        }
+ 
+        footer p {
+            font-size: 12px;
+            margin-top: 15px;
+            color: #999;
+        }
+           @media (max-width: 768px) {
+            .ti {
+                font-size: 32px;
+                margin-bottom: 30px;
+            }
+ 
+            .destination-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 0 15px;
+            }
+ 
+            .hokkaido_title,
+            .tai_title {
+                font-size: 24px;
+                padding: 30px 20px;
+                min-height: 150px;
+            }
+ 
+            header {
+                padding: 40px 20px;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            .ti {
+                font-size: 24px;
+            }
+ 
+            .hokkaido_title,
+            .tai_title {
+                font-size: 20px;
+                padding: 25px 15px;
+                min-height: 120px;
+            }
+ 
+            .hokkaido_title::before,
+            .tai_title::before {
+                font-size: 32px;
+            }
+        }
+   
