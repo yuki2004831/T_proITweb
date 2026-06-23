@@ -5,6 +5,6 @@ body {
         font-family: 'Sawarabi Mincho', sans-serif;
     }
 
-    background-image: url("/テクノプロweb制作/札幌_上空から.png");
+    background-image: url("../../photo/hokkaido/北海道_雪景色.png");
     background-size: cover;
 }
