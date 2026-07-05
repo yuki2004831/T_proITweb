@@ -105,7 +105,7 @@
         }
  
         .hokkaido_title::before {
-            content: '❄️';
+            content: '';
             position: absolute;
             left: 20px;
             font-size: 48px;
@@ -126,7 +126,7 @@
         }
  
         .tai_title::before {
-            content: '☀️';
+            content: '';
             position: absolute;
             right: 20px;
             font-size: 48px;
@@ -211,3 +211,22 @@
             }
         }
    
+        body.destination-bg {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            transition: background-image 0.3s ease;
+        }
+
+        body.bg-hokkaido {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
+                url("../photo/hokkaido/istockphoto-942199658-612x612.jpg");
+        }
+
+        body.bg-tai {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
+                url("../photo/tai/tai.jpg");
+        }
