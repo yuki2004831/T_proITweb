@@ -1,1 +1,21 @@
-/*何もないっす*/
+.header-band {
+  /* 画面の一番上に固定 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  /* 幅と高さ */
+  width: 100%;
+  height: 50px;
+  
+  /* 白い背景色 */
+  background-color: #ffffff;
+  
+  /* 他の要素より手前に表示する */
+  z-index: 9999;
+}
+
+/* 帯の後ろに本文が隠れないようにするための余白調整 */
+body {
+  margin-top: 60px; /* .header-bandの高さと同じにする */
+}
