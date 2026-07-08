@@ -311,17 +311,6 @@ footer p {
         font-size: 1.2rem;
     }
 
-    .hero-images {
-        position: static;
-        margin-top: 2rem;
-        justify-content: center;
-    }
-
-    .hero-image-card img {
-        width: 150px;
-        height: 150px;
-    }
-
     .nav-menu {
         gap: 1rem;
     }
