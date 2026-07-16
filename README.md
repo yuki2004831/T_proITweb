@@ -9,6 +9,10 @@
 
     - destinaton.html（岡野）
 
+    - hokkaido_mesi.html（岡野）
+
+    - hokkaido_zekkei.html（寺川）
+
     - kihon.html（寺川）
 
     - sapporo.html（坂本）
