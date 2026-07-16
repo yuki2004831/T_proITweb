@@ -20,9 +20,9 @@
 
     #### 担当ページ
 
-    - tai_main.html（大塚）
+    - 【完成】tai_main.html（大塚）
 
-    - Bangkok.html（大塚）
+    - 【完成】Bangkok.html（大塚）
 
     - phuket.html（北川）
 
