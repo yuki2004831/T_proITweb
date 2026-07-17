@@ -9,6 +9,10 @@
 
     - destinaton.html（岡野）
 
+    - hokkaido_mesi.html（岡野）
+
+    - hokkaido_zekkei.html（寺川）
+
     - kihon.html（寺川）
 
     - sapporo.html（坂本）
@@ -20,9 +24,9 @@
 
     #### 担当ページ
 
-    - tai_main.html（大塚）
+    - 【完成】tai_main.html（大塚）
 
-    - Bangkok.html（大塚）
+    - 【完成】Bangkok.html（大塚）
 
     - phuket.html（北川）
 
