@@ -2,284 +2,313 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道の四季</title>
 
-  <!-- スマートフォンでも見やすくする設定 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { /* bodyの中に影響する */
+            margin: 0; /* 要素の外側にスペースを開ける */
+            font-family: sans-serif;
+            text-align: center;
+        }
 
-  <title>北海道アクティビティ</title>
+        /* 春夏秋冬ボタン */
+        nav { /* navの中に影響する */
+            background-color: #eeeeee;
+            padding: 20px;
+        }
 
-  <style>
-    /* ページ全体の設定 */
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f5f9fb;
-      color: #333333;
-    }
+        nav a { /* navの中のaに影響する */
+            display: inline-block;
+            margin: 30px;
+            padding: 100px 100px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
 
-    /* ヘッダー */
-    header {
-      background-color: #168aad;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+        /* カーソルが載ったら色が変わる */
+        nav a:hover {
+            background-color: #388e3c;
+        }
 
-    header h1 {
-      margin: 0;
-    }
+        /* 各季節のエリア */
+        section {
+            height: 500px; /*高さ*/
+            padding: 50px 20px; /*要素の内側の余白が、上下50px 左右20px*/
+        }
 
-    /* メニュー */
-    nav {
-      margin-top: 15px;
-    }
+        .activity {
+            display: inline-block;
+            vertical-align: top;
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
+            width: 280px;
+            margin: 15px;
+            padding: 15px;
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+            background-color: white;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
 
-    /* メイン画像の部分 */
-    .main-image {
-      background-image: url("images/hokkaido.jpg");
-      background-size: cover;
-      background-position: center;
-      height: 450px;
+            text-align: left;
+        }
 
-      color: white;
-      text-align: center;
+        .activity img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
 
-      padding-top: 130px;
-    }
+        .activity-list {
+            text-align: center;
+        }
 
-    .main-image h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
 
-    .main-image p {
-      font-size: 18px;
-    }
+        #spring {
+            background-color: #ffd9e5;
+        }
 
-    /* ボタン */
-    .button {
-      display: inline-block;
-      background-color: #ff9f1c;
-      color: white;
-      text-decoration: none;
+        #summer {
+            background-color: #c8f7c5;
+        }
 
-      padding: 12px 25px;
-      margin-top: 20px;
+        #autumn {
+            background-color: #ffd39b;
+        }
 
-      border-radius: 5px;
-    }
+        #winter {
+            background-color: #d9f2ff;
+        }
 
-    .button:hover {
-      background-color: #e88b0c;
-    }
-
-    /* 各まとまり */
-    section {
-      width: 80%;
-      margin: 50px auto;
-    }
-
-    section h2 {
-      text-align: center;
-      color: #168aad;
-    }
-
-    /* アクティビティ一覧 */
-    .activity-list {
-      text-align: center;
-    }
-
-    /* 1つのアクティビティ */
-    .activity {
-      display: inline-block;
-      vertical-align: top;
-
-      width: 280px;
-      margin: 15px;
-      padding: 15px;
-
-      background-color: white;
-      border: 1px solid #cccccc;
-      border-radius: 8px;
-
-      text-align: left;
-    }
-
-    .activity img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .activity h3 {
-      color: #168aad;
-    }
-
-    /* 季節の部分 */
-    .season {
-      background-color: #dff3f8;
-      padding: 30px;
-      border-radius: 8px;
-    }
-
-    .season ul {
-      max-width: 500px;
-      margin: 20px auto;
-    }
-
-    .season li {
-      margin-bottom: 10px;
-    }
-
-    /* フッター */
-    footer {
-      background-color: #023047;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    /* 画面が小さいとき */
-    @media screen and (max-width: 600px) {
-      .main-image {
-        height: 350px;
-        padding-top: 80px;
-      }
-
-      .main-image h2 {
-        font-size: 30px;
-      }
-
-      section {
-        width: 90%;
-      }
-
-      .activity {
-        width: 85%;
-      }
-
-      nav a {
-        display: block;
-        margin: 8px;
-      }
-    }
-  </style>
+        /* 移動をなめらかにする */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ページ上部 -->
-  <header>
-    <h1>北海道アクティビティ</h1>
-
+    <!-- 季節ボタン -->
     <nav>
-      <a href="#activity">アクティビティ</a>
-      <a href="#season">季節から探す</a>
-      <a href="#about">サイトについて</a>
+        <a href="#spring">春</a>
+        <a href="#summer">夏</a>
+        <a href="#autumn">秋</a>
+        <a href="#winter">冬</a>
     </nav>
-  </header>
 
-  <!-- 大きなメイン画像 -->
-  <div class="main-image">
-    <h2>北海道の大自然を楽しもう</h2>
+    <!-- 春 -->
+    <section id="spring">
+        <h2>北海道の春</h2>
+        <p>桜や花畑を楽しめます。</p>
 
-    <p>
-      北海道で体験できるおすすめのアクティビティを紹介します。
-    </p>
+        <div class="activity-list">
 
-    <a href="#activity" class="button">
-      アクティビティを見る
-    </a>
-  </div>
+            <!-- カヌー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_canoe.png" alt="北海道の湖で楽しむカヌー">
 
-  <!-- アクティビティ紹介 -->
-  <section id="activity">
-    <h2>おすすめアクティビティ</h2>
+                <h3>カヌー</h3>
 
-    <div class="activity-list">
+                <p>
+                    静かな湖をカヌーで進みながら、
+                    北海道の美しい自然を楽しめます。
+                </p>
 
-      <!-- カヌー -->
-      <div class="activity">
-        <img src="images/canoe.jpg" alt="北海道の湖で楽しむカヌー">
+                <p>おすすめエリア：釧路・阿寒湖</p>
+            </div>
 
-        <h3>カヌー</h3>
+            <!-- ラフティング -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_Rafting.png" alt="川で楽しむラフティング">
 
-        <p>
-          静かな湖をカヌーで進みながら、
-          北海道の美しい自然を楽しめます。
-        </p>
+                <h3>ラフティング</h3>
 
-        <p>おすすめエリア：釧路・阿寒湖</p>
-      </div>
+                <p>
+                    川の流れに乗って進む、
+                    スリル満点のアクティビティです。
+                </p>
 
-      <!-- ラフティング -->
-      <div class="activity">
-        <img src="images/rafting.jpg" alt="川で楽しむラフティング">
+                <p>おすすめエリア：富良野・ニセコ</p>
+            </div>
 
-        <h3>ラフティング</h3>
+            <!-- スキー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_skiing.png" alt="北海道の雪山で楽しむスキー">
 
-        <p>
-          川の流れに乗って進む、
-          スリル満点のアクティビティです。
-        </p>
+                <h3>スキー</h3>
 
-        <p>おすすめエリア：富良野・ニセコ</p>
-      </div>
+                <p>
+                    北海道のふわふわな雪の上で、
+                    スキーやスノーボードを楽しめます。
+                </p>
 
-      <!-- スキー -->
-      <div class="activity">
-        <img src="images/ski.jpg" alt="北海道の雪山で楽しむスキー">
+                <p>おすすめエリア：ニセコ・札幌</p>
+            </div>
 
-        <h3>スキー</h3>
+        </div>
 
-        <p>
-          北海道のふわふわな雪の上で、
-          スキーやスノーボードを楽しめます。
-        </p>
+    </section>
 
-        <p>おすすめエリア：ニセコ・札幌</p>
-      </div>
+    <!-- 夏 -->
+    <section id="summer">
+        <h2>北海道の夏</h2>
+        <p>ラベンダー畑や自然のアクティビティを楽しめます。</p>
 
-    </div>
-  </section>
+        <div class="activity-list">
 
-  <!-- 季節ごとの紹介 -->
-  <section id="season" class="season">
-    <h2>季節から探す</h2>
+            <!-- カヌー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_canoe.png" alt="北海道の湖で楽しむカヌー">
 
-    <ul>
-      <li><strong>春：</strong>ハイキング、サイクリング</li>
-      <li><strong>夏：</strong>カヌー、ラフティング、乗馬</li>
-      <li><strong>秋：</strong>紅葉ハイキング、キャンプ</li>
-      <li><strong>冬：</strong>スキー、スノーボード、流氷ウォーク</li>
-    </ul>
-  </section>
+                <h3>カヌー</h3>
 
-  <!-- サイト説明 -->
-  <section id="about">
-    <h2>このサイトについて</h2>
+                <p>
+                    静かな湖をカヌーで進みながら、
+                    北海道の美しい自然を楽しめます。
+                </p>
 
-    <p>
-      このサイトでは、北海道で楽しめるアクティビティを紹介しています。
-      北海道旅行の予定を立てるときに、ぜひ参考にしてください。
-    </p>
-  </section>
+                <p>おすすめエリア：釧路・阿寒湖</p>
+            </div>
 
-  <!-- ページ下部 -->
-  <footer>
-    <p>© 2026 北海道アクティビティ</p>
-  </footer>
+            <!-- ラフティング -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_Rafting.png" alt="川で楽しむラフティング">
+
+                <h3>ラフティング</h3>
+
+                <p>
+                    川の流れに乗って進む、
+                    スリル満点のアクティビティです。
+                </p>
+
+                <p>おすすめエリア：富良野・ニセコ</p>
+            </div>
+
+            <!-- スキー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_skiing.png" alt="北海道の雪山で楽しむスキー">
+
+                <h3>スキー</h3>
+
+                <p>
+                    北海道のふわふわな雪の上で、
+                    スキーやスノーボードを楽しめます。
+                </p>
+
+                <p>おすすめエリア：ニセコ・札幌</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 秋 -->
+    <section id="autumn">
+        <h2>北海道の秋</h2>
+        <p>美しい紅葉や秋の味覚を楽しめます。</p>
+
+        <div class="activity-list">
+
+            <!-- カヌー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_canoe.png" alt="北海道の湖で楽しむカヌー">
+
+                <h3>カヌー</h3>
+
+                <p>
+                    静かな湖をカヌーで進みながら、
+                    北海道の美しい自然を楽しめます。
+                </p>
+
+                <p>おすすめエリア：釧路・阿寒湖</p>
+            </div>
+
+            <!-- ラフティング -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_Rafting.png" alt="川で楽しむラフティング">
+
+                <h3>ラフティング</h3>
+
+                <p>
+                    川の流れに乗って進む、
+                    スリル満点のアクティビティです。
+                </p>
+
+                <p>おすすめエリア：富良野・ニセコ</p>
+            </div>
+
+            <!-- スキー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_skiing.png" alt="北海道の雪山で楽しむスキー">
+
+                <h3>スキー</h3>
+
+                <p>
+                    北海道のふわふわな雪の上で、
+                    スキーやスノーボードを楽しめます。
+                </p>
+
+                <p>おすすめエリア：ニセコ・札幌</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 冬 -->
+    <section id="winter">
+        <h2>北海道の冬</h2>
+        <p>スキーや雪まつりを楽しめます。</p>
+
+        <div class="activity-list">
+
+            <!-- カヌー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_canoe.png" alt="北海道の湖で楽しむカヌー">
+
+                <h3>カヌー</h3>
+
+                <p>
+                    静かな湖をカヌーで進みながら、
+                    北海道の美しい自然を楽しめます。
+                </p>
+
+                <p>おすすめエリア：釧路・阿寒湖</p>
+            </div>
+
+            <!-- ラフティング -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_Rafting.png" alt="川で楽しむラフティング">
+
+                <h3>ラフティング</h3>
+
+                <p>
+                    川の流れに乗って進む、
+                    スリル満点のアクティビティです。
+                </p>
+
+                <p>おすすめエリア：富良野・ニセコ</p>
+            </div>
+
+            <!-- スキー -->
+            <div class="activity">
+                <img src="../../photo/hokkaido/hokkaido_skiing.png" alt="北海道の雪山で楽しむスキー">
+
+                <h3>スキー</h3>
+
+                <p>
+                    北海道のふわふわな雪の上で、
+                    スキーやスノーボードを楽しめます。
+                </p>
+
+                <p>おすすめエリア：ニセコ・札幌</p>
+            </div>
+
+        </div>
+    </section>
+
+
 
 </body>
 
