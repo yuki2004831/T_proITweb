@@ -1,1314 +1,286 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+
+  <!-- スマートフォンでも見やすくする設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>北海道アクティビティ</title>
 
   <style>
-    /* =========================
-       基本設定
-    ========================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* ページ全体の設定 */
     body {
-      font-family:
-        "Hiragino Kaku Gothic ProN",
-        "Yu Gothic",
-        "Meiryo",
-        sans-serif;
-      color: #183044;
-      background: #f6fafc;
-      line-height: 1.7;
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f5f9fb;
+      color: #333333;
     }
 
-    img {
-      width: 100%;
-      display: block;
+    /* ヘッダー */
+    header {
+      background-color: #168aad;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
 
-    a {
-      color: inherit;
+    header h1 {
+      margin: 0;
+    }
+
+    /* メニュー */
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: white;
       text-decoration: none;
+      margin: 0 10px;
     }
 
-    button {
-      font: inherit;
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    .container {
-      width: min(1120px, 90%);
-      margin: 0 auto;
-    }
+    /* メイン画像の部分 */
+    .main-image {
+      background-image: url("images/hokkaido.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 450px;
 
-    .section {
-      padding: 90px 0;
-    }
-
-    .section-title {
-      margin-bottom: 12px;
+      color: white;
       text-align: center;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.3;
+
+      padding-top: 130px;
     }
 
-    .section-subtitle {
-      margin-bottom: 45px;
-      color: #60778a;
-      text-align: center;
+    .main-image h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
     }
 
-    /* =========================
-       ヘッダー
-    ========================= */
-    .header {
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.88);
-      border-bottom: 1px solid rgba(24, 48, 68, 0.08);
-      backdrop-filter: blur(14px);
-    }
-
-    .header-inner {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 21px;
-      font-weight: 800;
-      color: #087ea4;
-    }
-
-    .logo-mark {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      color: #ffffff;
-      background: linear-gradient(135deg, #18a9ca, #087ea4);
-      border-radius: 50%;
-      font-size: 20px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav a {
-      position: relative;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: #0b91b7;
-      transition: width 0.25s;
-    }
-
-    .nav a:hover::after {
-      width: 100%;
-    }
-
-    .header-button {
-      padding: 10px 20px;
-      color: #ffffff;
-      background: #0b91b7;
-      border-radius: 999px;
-    }
-
-    .menu-button {
-      display: none;
-      width: 42px;
-      height: 42px;
-      color: #183044;
-      background: #ffffff;
-      border: 1px solid #d8e6ed;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 23px;
-    }
-
-    /* =========================
-       メインビジュアル
-    ========================= */
-    .hero {
-      position: relative;
-      min-height: 760px;
-      display: flex;
-      align-items: center;
-      color: #ffffff;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0, 31, 51, 0.72),
-          rgba(0, 31, 51, 0.2)
-        ),
-        url("https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=2000&q=85")
-        center / cover;
-    }
-
-    .hero-content {
-      max-width: 700px;
-      padding-top: 90px;
-    }
-
-    .hero-label {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 7px 15px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.38);
-      border-radius: 999px;
-      backdrop-filter: blur(8px);
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      margin-bottom: 22px;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 1.15;
-      letter-spacing: 0.03em;
-    }
-
-    .hero h1 span {
-      color: #a7efff;
-    }
-
-    .hero-description {
-      max-width: 600px;
-      margin-bottom: 34px;
+    .main-image p {
       font-size: 18px;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
+    /* ボタン */
     .button {
-      display: inline-flex;
-      min-height: 54px;
-      padding: 0 27px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      font-weight: 800;
-      transition:
-        transform 0.25s,
-        box-shadow 0.25s;
+      display: inline-block;
+      background-color: #ff9f1c;
+      color: white;
+      text-decoration: none;
+
+      padding: 12px 25px;
+      margin-top: 20px;
+
+      border-radius: 5px;
     }
 
     .button:hover {
-      transform: translateY(-3px);
+      background-color: #e88b0c;
     }
 
-    .button-primary {
-      color: #ffffff;
-      background: #0ca6c9;
-      box-shadow: 0 12px 28px rgba(12, 166, 201, 0.32);
+    /* 各まとまり */
+    section {
+      width: 80%;
+      margin: 50px auto;
     }
 
-    .button-secondary {
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(8px);
-    }
-
-    .hero-info {
-      position: absolute;
-      right: 5%;
-      bottom: 45px;
-      display: flex;
-      gap: 14px;
-    }
-
-    .hero-info-card {
-      min-width: 145px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 18px;
-      backdrop-filter: blur(12px);
-    }
-
-    .hero-info-card strong {
-      display: block;
-      font-size: 27px;
-    }
-
-    .hero-info-card span {
-      font-size: 13px;
-    }
-
-    /* =========================
-       カテゴリ
-    ========================= */
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 18px;
-    }
-
-    .category-card {
-      padding: 28px 12px;
+    section h2 {
       text-align: center;
-      background: #ffffff;
-      border: 1px solid #e1edf2;
-      border-radius: 22px;
-      box-shadow: 0 12px 30px rgba(22, 67, 92, 0.06);
-      transition:
-        transform 0.25s,
-        box-shadow 0.25s;
+      color: #168aad;
     }
 
-    .category-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 18px 38px rgba(22, 67, 92, 0.13);
+    /* アクティビティ一覧 */
+    .activity-list {
+      text-align: center;
     }
 
-    .category-icon {
-      width: 62px;
-      height: 62px;
-      margin: 0 auto 14px;
-      display: grid;
-      place-items: center;
-      background: #eaf9fd;
-      border-radius: 20px;
-      font-size: 29px;
+    /* 1つのアクティビティ */
+    .activity {
+      display: inline-block;
+      vertical-align: top;
+
+      width: 280px;
+      margin: 15px;
+      padding: 15px;
+
+      background-color: white;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+
+      text-align: left;
     }
 
-    .category-card h3 {
-      font-size: 15px;
-    }
-
-    /* =========================
-       おすすめアクティビティ
-    ========================= */
-    .activities-section {
-      background: #eaf4f8;
-    }
-
-    .activity-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .activity-card {
-      overflow: hidden;
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 14px 35px rgba(23, 64, 87, 0.1);
-      transition:
-        transform 0.3s,
-        box-shadow 0.3s;
-    }
-
-    .activity-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 22px 45px rgba(23, 64, 87, 0.17);
-    }
-
-    .activity-image {
-      position: relative;
-      height: 230px;
-      overflow: hidden;
-    }
-
-    .activity-image img {
-      height: 100%;
+    .activity img {
+      width: 100%;
+      height: 180px;
       object-fit: cover;
-      transition: transform 0.4s;
     }
 
-    .activity-card:hover img {
-      transform: scale(1.06);
+    .activity h3 {
+      color: #168aad;
     }
 
-    .tag {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      padding: 6px 13px;
-      color: #ffffff;
-      background: #0c9fbe;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .favorite {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-      color: #183044;
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .activity-content {
-      padding: 23px;
-    }
-
-    .activity-area {
-      margin-bottom: 7px;
-      color: #0b91b7;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .activity-content h3 {
-      margin-bottom: 13px;
-      font-size: 21px;
-      line-height: 1.5;
-    }
-
-    .rating {
-      margin-bottom: 18px;
-      color: #ff9d00;
-      font-weight: 800;
-    }
-
-    .rating span {
-      color: #78909f;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .activity-bottom {
-      padding-top: 17px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      border-top: 1px solid #e6eef2;
-    }
-
-    .price {
-      color: #e75d36;
-      font-size: 22px;
-      font-weight: 900;
-    }
-
-    .price small {
-      color: #78909f;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .detail-link {
-      color: #0b91b7;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    /* =========================
-       季節
-    ========================= */
-    .season-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .season-card {
-      position: relative;
-      min-height: 390px;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(23, 64, 87, 0.12);
-    }
-
-    .season-card img {
-      position: absolute;
-      inset: 0;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-
-    .season-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .season-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        transparent 35%,
-        rgba(0, 24, 38, 0.82)
-      );
-    }
-
-    .season-content {
-      position: relative;
-      z-index: 1;
-      padding: 27px;
-      color: #ffffff;
-    }
-
-    .season-content span {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .season-content h3 {
-      margin: 5px 0 8px;
-      font-size: 29px;
-    }
-
-    /* =========================
-       エリア紹介
-    ========================= */
-    .area-section {
-      background:
-        linear-gradient(135deg, #066f8d, #054c68);
-      color: #ffffff;
-    }
-
-    .area-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 65px;
-    }
-
-    .area-content h2 {
-      margin-bottom: 18px;
-      font-size: clamp(30px, 5vw, 47px);
-      line-height: 1.4;
-    }
-
-    .area-content p {
-      margin-bottom: 28px;
-      color: #d5eef4;
-    }
-
-    .area-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .area-item {
-      padding: 15px 18px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 14px;
-      font-weight: 700;
-    }
-
-    .map-box {
-      position: relative;
-      min-height: 440px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 35px;
-    }
-
-    .map-shape {
-      font-size: 180px;
-      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
-    }
-
-    .map-label {
-      position: absolute;
-      padding: 7px 12px;
-      color: #054c68;
-      background: #ffffff;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    .label-sapporo {
-      top: 56%;
-      left: 25%;
-    }
-
-    .label-furano {
-      top: 42%;
-      left: 52%;
-    }
-
-    .label-shiretoko {
-      top: 24%;
-      right: 11%;
-    }
-
-    .label-hakodate {
-      bottom: 13%;
-      left: 18%;
-    }
-
-    /* =========================
-       口コミ
-    ========================= */
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .review-card {
+    /* 季節の部分 */
+    .season {
+      background-color: #dff3f8;
       padding: 30px;
-      background: #ffffff;
-      border: 1px solid #e0ebf0;
-      border-radius: 22px;
-      box-shadow: 0 12px 30px rgba(23, 64, 87, 0.07);
+      border-radius: 8px;
     }
 
-    .review-stars {
-      margin-bottom: 14px;
-      color: #ff9d00;
+    .season ul {
+      max-width: 500px;
+      margin: 20px auto;
     }
 
-    .review-card p {
-      margin-bottom: 22px;
-      color: #526b7c;
+    .season li {
+      margin-bottom: 10px;
     }
 
-    .review-user {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-
-    .user-icon {
-      width: 47px;
-      height: 47px;
-      display: grid;
-      place-items: center;
-      color: #ffffff;
-      background: linear-gradient(135deg, #0ca6c9, #56c98f);
-      border-radius: 50%;
-      font-weight: 800;
-    }
-
-    .review-user small {
-      color: #78909f;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-    .cta {
-      padding: 85px 0;
-      color: #ffffff;
+    /* フッター */
+    footer {
+      background-color: #023047;
+      color: white;
       text-align: center;
-      background:
-        linear-gradient(
-          rgba(0, 62, 83, 0.78),
-          rgba(0, 62, 83, 0.78)
-        ),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85")
-        center / cover;
+      padding: 25px;
     }
 
-    .cta h2 {
-      margin-bottom: 15px;
-      font-size: clamp(30px, 5vw, 50px);
-    }
-
-    .cta p {
-      margin-bottom: 30px;
-    }
-
-    /* =========================
-       フッター
-    ========================= */
-    .footer {
-      padding: 65px 0 25px;
-      color: #c4d6df;
-      background: #102b3a;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 45px;
-    }
-
-    .footer-logo {
-      margin-bottom: 18px;
-      color: #ffffff;
-      font-size: 23px;
-      font-weight: 900;
-    }
-
-    .footer h3 {
-      margin-bottom: 18px;
-      color: #ffffff;
-      font-size: 16px;
-    }
-
-    .footer ul {
-      list-style: none;
-    }
-
-    .footer li {
-      margin-bottom: 9px;
-    }
-
-    .footer a:hover {
-      color: #ffffff;
-    }
-
-    .copyright {
-      padding-top: 22px;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 13px;
-    }
-
-    /* =========================
-       レスポンシブ
-    ========================= */
-    @media (max-width: 1000px) {
-      .category-grid {
-        grid-template-columns: repeat(3, 1fr);
+    /* 画面が小さいとき */
+    @media screen and (max-width: 600px) {
+      .main-image {
+        height: 350px;
+        padding-top: 80px;
       }
 
-      .activity-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .main-image h2 {
+        font-size: 30px;
       }
 
-      .season-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .area-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .review-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero-info {
-        display: none;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .section {
-        padding: 65px 0;
-      }
-
-      .menu-button {
-        display: block;
-      }
-
-      .nav {
-        position: absolute;
-        top: 74px;
-        left: 5%;
+      section {
         width: 90%;
-        padding: 25px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        background: #ffffff;
-        border-radius: 18px;
-        box-shadow: 0 18px 40px rgba(23, 64, 87, 0.16);
       }
 
-      .nav.open {
-        display: flex;
+      .activity {
+        width: 85%;
       }
 
-      .nav a {
-        padding: 8px;
-      }
-
-      .header-button {
-        text-align: center;
-      }
-
-      .hero {
-        min-height: 680px;
-        text-align: center;
-      }
-
-      .hero-content {
-        margin: 0 auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .activity-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .season-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .season-card {
-        min-height: 330px;
-      }
-
-      .area-list {
-        grid-template-columns: 1fr;
-      }
-
-      .map-box {
-        min-height: 340px;
-      }
-
-      .map-shape {
-        font-size: 130px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .hero h1 {
-        font-size: 41px;
-      }
-
-      .hero-description {
-        font-size: 15px;
-      }
-
-      .category-grid {
-        gap: 11px;
-      }
-
-      .category-card {
-        padding: 22px 8px;
-      }
-
-      .category-card h3 {
-        font-size: 13px;
+      nav a {
+        display: block;
+        margin: 8px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- ヘッダー -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#" class="logo">
-        <span class="logo-mark">❄</span>
-        HOKKAIDO ACTIVITY
-      </a>
 
-      <button class="menu-button" id="menuButton" aria-label="メニューを開く">
-        ☰
-      </button>
+  <!-- ページ上部 -->
+  <header>
+    <h1>北海道アクティビティ</h1>
 
-      <nav class="nav" id="nav">
-        <a href="#category">アクティビティ</a>
-        <a href="#recommend">おすすめ</a>
-        <a href="#season">季節から探す</a>
-        <a href="#area">エリアから探す</a>
-        <a href="#review">体験者の声</a>
-        <a href="#recommend" class="header-button">体験を探す</a>
-      </nav>
-    </div>
+    <nav>
+      <a href="#activity">アクティビティ</a>
+      <a href="#season">季節から探す</a>
+      <a href="#about">サイトについて</a>
+    </nav>
   </header>
 
-  <main>
-    <!-- メインビジュアル -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <p class="hero-label">大自然を、全身で遊ぼう。</p>
+  <!-- 大きなメイン画像 -->
+  <div class="main-image">
+    <h2>北海道の大自然を楽しもう</h2>
 
-          <h1>
-            北海道で出会う、<br />
-            <span>忘れられない体験。</span>
-          </h1>
+    <p>
+      北海道で体験できるおすすめのアクティビティを紹介します。
+    </p>
 
-          <p class="hero-description">
-            ラフティング、カヌー、乗馬、スキー、流氷ウォーク。
-            北海道の雄大な自然を楽しめるアクティビティを紹介します。
-          </p>
+    <a href="#activity" class="button">
+      アクティビティを見る
+    </a>
+  </div>
 
-          <div class="hero-buttons">
-            <a href="#recommend" class="button button-primary">
-              おすすめ体験を見る
-            </a>
+  <!-- アクティビティ紹介 -->
+  <section id="activity">
+    <h2>おすすめアクティビティ</h2>
 
-            <a href="#season" class="button button-secondary">
-              季節から探す
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="activity-list">
 
-      <div class="hero-info">
-        <div class="hero-info-card">
-          <strong>50+</strong>
-          <span>掲載アクティビティ</span>
-        </div>
+      <!-- カヌー -->
+      <div class="activity">
+        <img src="images/canoe.jpg" alt="北海道の湖で楽しむカヌー">
 
-        <div class="hero-info-card">
-          <strong>4.8</strong>
-          <span>平均レビュー</span>
-        </div>
-      </div>
-    </section>
+        <h3>カヌー</h3>
 
-    <!-- カテゴリ -->
-    <section class="section" id="category">
-      <div class="container">
-        <h2 class="section-title">やりたいことから探す</h2>
-        <p class="section-subtitle">
-          北海道ならではの体験を、ジャンル別に見つけよう。
-        </p>
-
-        <div class="category-grid">
-          <a href="#recommend" class="category-card">
-            <div class="category-icon">🛶</div>
-            <h3>カヌー・SUP</h3>
-          </a>
-
-          <a href="#recommend" class="category-card">
-            <div class="category-icon">🌊</div>
-            <h3>ラフティング</h3>
-          </a>
-
-          <a href="#recommend" class="category-card">
-            <div class="category-icon">🐎</div>
-            <h3>乗馬</h3>
-          </a>
-
-          <a href="#recommend" class="category-card">
-            <div class="category-icon">🎿</div>
-            <h3>スキー</h3>
-          </a>
-
-          <a href="#recommend" class="category-card">
-            <div class="category-icon">🧊</div>
-            <h3>流氷ウォーク</h3>
-          </a>
-
-          <a href="#recommend" class="category-card">
-            <div class="category-icon">🚲</div>
-            <h3>サイクリング</h3>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- おすすめ -->
-    <section class="section activities-section" id="recommend">
-      <div class="container">
-        <h2 class="section-title">おすすめアクティビティ</h2>
-        <p class="section-subtitle">
-          初めて北海道を訪れる人にも人気の体験を集めました。
-        </p>
-
-        <div class="activity-grid">
-          <!-- 1 -->
-          <article class="activity-card">
-            <div class="activity-image">
-              <img
-                src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=900&q=80"
-                alt="湖でのカヌー体験"
-              />
-              <span class="tag">夏におすすめ</span>
-              <button class="favorite" aria-label="お気に入り">♡</button>
-            </div>
-
-            <div class="activity-content">
-              <p class="activity-area">📍 釧路・阿寒湖</p>
-              <h3>静かな湖を進む早朝カヌーツアー</h3>
-
-              <p class="rating">
-                ★★★★★
-                <span>4.9（128件）</span>
-              </p>
-
-              <div class="activity-bottom">
-                <p class="price">
-                  ¥6,500
-                  <small>／人</small>
-                </p>
-
-                <a href="#" class="detail-link">詳しく見る →</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2 -->
-          <article class="activity-card">
-            <div class="activity-image">
-              <img
-                src="https://images.unsplash.com/photo-1517825738774-7de9363ef735?auto=format&fit=crop&w=900&q=80"
-                alt="川でのラフティング"
-              />
-              <span class="tag">人気No.1</span>
-              <button class="favorite" aria-label="お気に入り">♡</button>
-            </div>
-
-            <div class="activity-content">
-              <p class="activity-area">📍 富良野</p>
-              <h3>大自然を駆け抜ける空知川ラフティング</h3>
-
-              <p class="rating">
-                ★★★★★
-                <span>4.8（96件）</span>
-              </p>
-
-              <div class="activity-bottom">
-                <p class="price">
-                  ¥7,000
-                  <small>／人</small>
-                </p>
-
-                <a href="#" class="detail-link">詳しく見る →</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3 -->
-          <article class="activity-card">
-            <div class="activity-image">
-              <img
-                src="https://images.unsplash.com/photo-1551524164-687a55dd1126?auto=format&fit=crop&w=900&q=80"
-                alt="雪山でのスキー"
-              />
-              <span class="tag">冬限定</span>
-              <button class="favorite" aria-label="お気に入り">♡</button>
-            </div>
-
-            <div class="activity-content">
-              <p class="activity-area">📍 ニセコ</p>
-              <h3>パウダースノーを楽しむスキーレッスン</h3>
-
-              <p class="rating">
-                ★★★★★
-                <span>4.9（214件）</span>
-              </p>
-
-              <div class="activity-bottom">
-                <p class="price">
-                  ¥12,000
-                  <small>／人</small>
-                </p>
-
-                <a href="#" class="detail-link">詳しく見る →</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 季節 -->
-    <section class="section" id="season">
-      <div class="container">
-        <h2 class="section-title">季節から探す</h2>
-        <p class="section-subtitle">
-          四季がはっきりしている北海道は、季節ごとに違う遊び方があります。
-        </p>
-
-        <div class="season-grid">
-          <a href="#" class="season-card">
-            <img
-              src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=700&q=80"
-              alt="春の自然"
-            />
-            <div class="season-content">
-              <span>MARCH - MAY</span>
-              <h3>春</h3>
-              <p>雪解けの自然と、新緑を楽しむ。</p>
-            </div>
-          </a>
-
-          <a href="#" class="season-card">
-            <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80"
-              alt="夏の自然"
-            />
-            <div class="season-content">
-              <span>JUNE - AUGUST</span>
-              <h3>夏</h3>
-              <p>湖、川、草原を全身で遊ぶ。</p>
-            </div>
-          </a>
-
-          <a href="#" class="season-card">
-            <img
-              src="https://images.unsplash.com/photo-1508264165352-258a6f35f55d?auto=format&fit=crop&w=700&q=80"
-              alt="秋の紅葉"
-            />
-            <div class="season-content">
-              <span>SEPTEMBER - NOVEMBER</span>
-              <h3>秋</h3>
-              <p>鮮やかな紅葉の中を歩く。</p>
-            </div>
-          </a>
-
-          <a href="#" class="season-card">
-            <img
-              src="https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&w=700&q=80"
-              alt="冬の雪景色"
-            />
-            <div class="season-content">
-              <span>DECEMBER - FEBRUARY</span>
-              <h3>冬</h3>
-              <p>世界有数の雪と氷を体験する。</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- エリア -->
-    <section class="section area-section" id="area">
-      <div class="container area-inner">
-        <div class="area-content">
-          <h2>北海道のどこで遊ぶ？</h2>
-
-          <p>
-            エリアごとに景色も遊び方もさまざま。
-            旅の目的地に合わせて、体験したいアクティビティを探してみましょう。
-          </p>
-
-          <div class="area-list">
-            <a href="#" class="area-item">札幌・小樽</a>
-            <a href="#" class="area-item">富良野・美瑛</a>
-            <a href="#" class="area-item">ニセコ</a>
-            <a href="#" class="area-item">知床・網走</a>
-            <a href="#" class="area-item">釧路・阿寒</a>
-            <a href="#" class="area-item">函館</a>
-          </div>
-        </div>
-
-        <div class="map-box">
-          <div class="map-shape">🗾</div>
-          <span class="map-label label-sapporo">札幌</span>
-          <span class="map-label label-furano">富良野</span>
-          <span class="map-label label-shiretoko">知床</span>
-          <span class="map-label label-hakodate">函館</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 口コミ -->
-    <section class="section" id="review">
-      <div class="container">
-        <h2 class="section-title">体験した人の声</h2>
-        <p class="section-subtitle">
-          北海道でアクティビティを楽しんだ人から届いた感想です。
-        </p>
-
-        <div class="review-grid">
-          <article class="review-card">
-            <p class="review-stars">★★★★★</p>
-
-            <p>
-              初めてのカヌーでしたが、ガイドさんが優しく教えてくれました。
-              朝の湖がとても静かで、北海道らしい景色を楽しめました。
-            </p>
-
-            <div class="review-user">
-              <div class="user-icon">A</div>
-              <div>
-                <strong>あかりさん</strong><br />
-                <small>阿寒湖カヌーツアー</small>
-              </div>
-            </div>
-          </article>
-
-          <article class="review-card">
-            <p class="review-stars">★★★★★</p>
-
-            <p>
-              ラフティングは想像以上に迫力がありました。
-              友達と一緒に参加して、旅行の中で一番盛り上がった体験です。
-            </p>
-
-            <div class="review-user">
-              <div class="user-icon">K</div>
-              <div>
-                <strong>けんたさん</strong><br />
-                <small>富良野ラフティング</small>
-              </div>
-            </div>
-          </article>
-
-          <article class="review-card">
-            <p class="review-stars">★★★★★</p>
-
-            <p>
-              雪が本当にふわふわでした。
-              初心者向けのレッスンだったので、安心してスキーを楽しめました。
-            </p>
-
-            <div class="review-user">
-              <div class="user-icon">M</div>
-              <div>
-                <strong>みさきさん</strong><br />
-                <small>ニセコスキーレッスン</small>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <div class="container">
-        <h2>次の休日は、北海道で冒険しよう。</h2>
         <p>
-          あなたにぴったりのアクティビティを見つけて、
-          忘れられない思い出をつくりませんか。
+          静かな湖をカヌーで進みながら、
+          北海道の美しい自然を楽しめます。
         </p>
 
-        <a href="#recommend" class="button button-primary">
-          アクティビティを探す
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- フッター -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <p class="footer-logo">❄ HOKKAIDO ACTIVITY</p>
-          <p>
-            北海道の自然を楽しめるアクティビティを紹介する
-            旅行情報サイトです。
-          </p>
-        </div>
-
-        <div>
-          <h3>アクティビティ</h3>
-          <ul>
-            <li><a href="#">カヌー・SUP</a></li>
-            <li><a href="#">ラフティング</a></li>
-            <li><a href="#">乗馬</a></li>
-            <li><a href="#">スキー</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>エリア</h3>
-          <ul>
-            <li><a href="#">札幌・小樽</a></li>
-            <li><a href="#">富良野・美瑛</a></li>
-            <li><a href="#">ニセコ</a></li>
-            <li><a href="#">知床・網走</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>サイト情報</h3>
-          <ul>
-            <li><a href="#">このサイトについて</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-            <li><a href="#">プライバシーポリシー</a></li>
-          </ul>
-        </div>
+        <p>おすすめエリア：釧路・阿寒湖</p>
       </div>
 
-      <p class="copyright">
-        © 2026 HOKKAIDO ACTIVITY. All Rights Reserved.
-      </p>
+      <!-- ラフティング -->
+      <div class="activity">
+        <img src="images/rafting.jpg" alt="川で楽しむラフティング">
+
+        <h3>ラフティング</h3>
+
+        <p>
+          川の流れに乗って進む、
+          スリル満点のアクティビティです。
+        </p>
+
+        <p>おすすめエリア：富良野・ニセコ</p>
+      </div>
+
+      <!-- スキー -->
+      <div class="activity">
+        <img src="images/ski.jpg" alt="北海道の雪山で楽しむスキー">
+
+        <h3>スキー</h3>
+
+        <p>
+          北海道のふわふわな雪の上で、
+          スキーやスノーボードを楽しめます。
+        </p>
+
+        <p>おすすめエリア：ニセコ・札幌</p>
+      </div>
+
     </div>
+  </section>
+
+  <!-- 季節ごとの紹介 -->
+  <section id="season" class="season">
+    <h2>季節から探す</h2>
+
+    <ul>
+      <li><strong>春：</strong>ハイキング、サイクリング</li>
+      <li><strong>夏：</strong>カヌー、ラフティング、乗馬</li>
+      <li><strong>秋：</strong>紅葉ハイキング、キャンプ</li>
+      <li><strong>冬：</strong>スキー、スノーボード、流氷ウォーク</li>
+    </ul>
+  </section>
+
+  <!-- サイト説明 -->
+  <section id="about">
+    <h2>このサイトについて</h2>
+
+    <p>
+      このサイトでは、北海道で楽しめるアクティビティを紹介しています。
+      北海道旅行の予定を立てるときに、ぜひ参考にしてください。
+    </p>
+  </section>
+
+  <!-- ページ下部 -->
+  <footer>
+    <p>© 2026 北海道アクティビティ</p>
   </footer>
 
-  <script>
-    // スマートフォン用メニュー
-    const menuButton = document.getElementById("menuButton");
-    const nav = document.getElementById("nav");
-
-    menuButton.addEventListener("click", () => {
-      nav.classList.toggle("open");
-
-      if (nav.classList.contains("open")) {
-        menuButton.textContent = "×";
-      } else {
-        menuButton.textContent = "☰";
-      }
-    });
-
-    // メニューを押したら閉じる
-    const navLinks = nav.querySelectorAll("a");
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("open");
-        menuButton.textContent = "☰";
-      });
-    });
-
-    // お気に入りボタン
-    const favoriteButtons = document.querySelectorAll(".favorite");
-
-    favoriteButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        if (button.textContent === "♡") {
-          button.textContent = "♥";
-          button.style.color = "#e75d5d";
-        } else {
-          button.textContent = "♡";
-          button.style.color = "#183044";
-        }
-      });
-    });
-  </script>
 </body>
+
 </html>
