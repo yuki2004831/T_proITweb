@@ -70,7 +70,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     color: #ffffff;
-    font-size: clamp(2.8rem, 5.1vw, 4.8rem);
+    font-size: clamp(2.5rem, 4.6vw, 4.3rem);
     font-weight: 800;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.68);
 }
