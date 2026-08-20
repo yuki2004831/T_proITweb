@@ -57,7 +57,7 @@ body {
 .nav-link:hover {
     color: #FFD700;
 }
-/* ここからcss書いてね！ */
+/* --body-- */
 
 .bangkok-hero {
     min-height: 100vh;
@@ -182,7 +182,7 @@ body {
 
 
 
-/* ここから下はいじらないでね！ */
+/* --footer-- */
 footer {
     background-color: #333;
     color: #fff;
