@@ -65,7 +65,7 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
     
-    background-image: url('/T_proITweb/all/photo/tai/phuket_image/back.jpg'); 
+    background-image: url('../../photo/tai/phuket_image/back.jpg');
     background-size: cover;          
     background-position: center;    
     background-attachment: fixed;   

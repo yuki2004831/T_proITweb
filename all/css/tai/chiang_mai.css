@@ -59,7 +59,7 @@ body {
 }
 /* ここからcss書いてね！ */
 section{
-    background-image: url("/T_proITweb/all/photo/tai/Chiang_mai/heikei_2.jpg");
+    background-image: url("../../photo/tai/Chiang_mai/heikei_2.jpg");
     background-size: cover;
     background-position: center;
     color: white;
